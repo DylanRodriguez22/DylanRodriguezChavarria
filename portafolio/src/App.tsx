@@ -1,122 +1,77 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-
+import { GithubIcon } from "./assets/githubIcon";
+import { LinkedinIcon } from "./assets/linkedinIcon";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      <div className="lg:flex lg:justify-between lg:gap-4">
+        {/*Este div padre es el de la izquierda en pantallas grandes y el de arriba en móviles*/}
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        <div className="mt-15 ml-15">
+          {/*Este es donde va el nombre y que soy*/}
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+              Dylan Rodríguez Chavarría
+            </h1>
+            <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+              Algo de Developer
+            </h2>
+          </div>
+          {/*Este es la lista de contenidos de la página*/}
+          <nav className="nav hidden lg:block">
+            <ul className="mt-16 w-max">
+              <li>About</li>
+              <li>Experience</li>
+              <li>Projects</li>
+            </ul>
+          </nav>
+          {/* Aquí las redes */}
+          <div>
+            <ul className="ml-1 mt-8 flex items-center gap-4">
+              <li>
+                <a
+                  href="https://github.com/DylanRodriguez22"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GithubIcon className="w-6 h-6 text-gray-700 hover:text-black transition-colors" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/dylan-rodriguez-chavarria-5ab69a353"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedinIcon className="w-6 h-6 text-gray-700 hover:text-[#0A66C2] transition-colors" />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+        {/*Div del contenido*/}
+        <div className="pt-24 lg:w-[52%] lg:py-24">
+          <section
+            id="about"
+            className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+          >
+            sección de about
+          </section>
+          <section
+            id="experience"
+            className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+          >
+            sección de experience
+          </section>
+          <section
+            id="projects"
+            className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+          >
+            sección de projects
+          </section>
         </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
