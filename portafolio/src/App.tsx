@@ -8,6 +8,32 @@ const NAV_ITEMS = [
   { id: "projects", label: "Projects" },
 ];
 
+const PROJECTS = [
+  {
+    title: "Nombre del proyecto 1",
+    description:
+      "Breve descripción de qué hace el proyecto y qué problema resuelve.",
+    image: "/images/projects/proyecto-1.png",
+    tags: ["React", "TypeScript", "Tailwind"],
+    link: "https://github.com/DylanRodriguez22/proyecto-1",
+  },
+  {
+    title: "Nombre del proyecto 2",
+    description:
+      "Breve descripción de qué hace el proyecto y qué problema resuelve.",
+    image: "/images/projects/proyecto-2.png",
+    tags: ["Node.js", "Express", "MongoDB"],
+    link: "https://github.com/DylanRodriguez22/proyecto-2",
+  },
+  {
+    title: "Nombre del proyecto 3",
+    description:
+      "Breve descripción de qué hace el proyecto y qué problema resuelve.",
+    image: "/images/projects/proyecto-3.png",
+    tags: ["Next.js", "PostgreSQL"],
+    link: "https://github.com/DylanRodriguez22/proyecto-3",
+  },
+];
 function App() {
   const [activeSection, setActiveSection] = useState("about");
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -21,7 +47,7 @@ function App() {
           }
         });
       },
-      { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
     );
 
     NAV_ITEMS.forEach(({ id }) => {
@@ -51,8 +77,7 @@ function App() {
                 Desarrollador de Software
               </h2>
               <p className="mt-4 max-w-xs leading-normal text-slate-400">
-                Construyo experiencias web accesibles y con atención al
-                detalle.
+                Construyo experiencias web accesibles y con atención al detalle.
               </p>
 
               {/* Nav */}
@@ -62,10 +87,7 @@ function App() {
                     const isActive = activeSection === id;
                     return (
                       <li key={id} className="group">
-                        <a
-                          href={`#${id}`}
-                          className="flex items-center py-3"
-                        >
+                        <a href={`#${id}`} className="flex items-center py-3">
                           <span
                             className={`mr-4 h-px transition-all ${
                               isActive
@@ -129,11 +151,11 @@ function App() {
               <div>
                 <p className="leading-relaxed text-slate-400">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam nec arcu eget elit ultrices consequat. Duis
-                  eleifend tellus sed nisl consequat, vitae ultrices quam
-                  eleifend. Integer accumsan diam sagittis turpis mattis, eu
-                  rutrum nulla ornare. Nulla facilisi. Sed sapien turpis,
-                  ultricies vel tortor nec, euismod porta enim.
+                  Aliquam nec arcu eget elit ultrices consequat. Duis eleifend
+                  tellus sed nisl consequat, vitae ultrices quam eleifend.
+                  Integer accumsan diam sagittis turpis mattis, eu rutrum nulla
+                  ornare. Nulla facilisi. Sed sapien turpis, ultricies vel
+                  tortor nec, euismod porta enim.
                 </p>
               </div>
             </section>
@@ -148,9 +170,7 @@ function App() {
                 </h2>
               </div>
               <div className="group relative -mx-4 rounded-md px-4 py-4 transition-colors hover:bg-slate-800/50">
-                <h3 className="font-medium text-slate-200">
-                  Puesto · Empresa
-                </h3>
+                <h3 className="font-medium text-slate-200">Puesto · Empresa</h3>
                 <p className="mt-1 text-sm text-slate-500">2024 — Presente</p>
                 <p className="mt-2 leading-relaxed text-slate-400">
                   Descripción breve de tus responsabilidades y logros.
@@ -167,14 +187,49 @@ function App() {
                   Projects
                 </h2>
               </div>
-              <div className="group relative -mx-4 rounded-md px-4 py-4 transition-colors hover:bg-slate-800/50">
-                <h3 className="font-medium text-slate-200 group-hover:text-teal-300 transition-colors">
-                  Nombre del proyecto
-                </h3>
-                <p className="mt-2 leading-relaxed text-slate-400">
-                  Descripción breve del proyecto y su propósito.
-                </p>
-              </div>
+
+              <ul className="group/list">
+                {PROJECTS.map((project) => (
+                  <li key={project.title} className="mb-12">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/item -mx-4 grid grid-cols-8 gap-4 rounded-md px-4 py-4 transition-colors sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 hover:bg-slate-800/50"
+                    >
+                      {/* Imagen */}
+                      <div className="col-span-3 sm:order-2 sm:col-span-2">
+                        <img
+                          src={project.image}
+                          alt={`Captura de pantalla del proyecto ${project.title}`}
+                          className="rounded border-2 border-slate-200/10 transition group-hover/item:border-slate-200/30 object-cover aspect-video"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      {/* Texto */}
+                      <div className="col-span-5 sm:order-1 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200 group-hover/item:text-teal-300 transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal text-slate-400">
+                          {project.description}
+                        </p>
+                        <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+                          {project.tags.map((tag) => (
+                            <li
+                              key={tag}
+                              className="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300"
+                            >
+                              {tag}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </section>
           </main>
         </div>
